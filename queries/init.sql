@@ -1075,7 +1075,7 @@ CREATE TABLE IF NOT EXISTS db_cp.regions
 );
 
 -- populate table regions
-INSERT INTO db_cp.regions (region)
+INSERT INTO dp_cp.regions (region)
 VALUES ('Saint Petersburg City'),
        ('Sakhalin Oblast'),
        ('Vladimir Oblast'),
@@ -1127,14 +1127,14 @@ VALUES ('Saint Petersburg City'),
        ('Nizhny Novgorod Oblast');
 
 -- create table categories
-CREATE TABLE IF NOT EXISTS db_cp.categories
+CREATE TABLE IF NOT EXISTS dp_cp.categories
 (
     id   SERIAL PRIMARY KEY,
     name varchar(48) NOT NULL
 );
 
 -- populate table categories
-INSERT INTO db_cp.categories (name)
+INSERT INTO dp_cp.categories (name)
 SELECT random_string(8) as name
 FROM generate_series(1, 48);
 
@@ -1157,6 +1157,12 @@ SELECT random_number(1, 48)::int                                         as cate
        random_number(1, 5000)::int                                       as price
 FROM generate_series(1, 800);
 
+-- МОЁ
+INSERT INTO dp_cp.rights (category_id, name)
+SELECT random_number(1, 48)::int                                         as category_id,
+       random_string(10)                                                 as name
+FROM generate_series(1, 800);
+
 -- create table stores
 CREATE TABLE IF NOT EXISTS db_cp.stores
 (
@@ -1169,6 +1175,11 @@ INSERT INTO db_cp.stores (name)
 SELECT random_string(8) as name
 FROM generate_series(1, 200);
 
+-- populate table rights
+INSERT INTO dp_cp.intermediaries (name)
+SELECT random_string(8)                                                 as name
+FROM generate_series(1, 200);
+
 -- create table transactions
 CREATE TABLE IF NOT EXISTS db_cp.transactions
 (
@@ -1178,6 +1189,11 @@ CREATE TABLE IF NOT EXISTS db_cp.transactions
 
 -- populate table transactions
 INSERT INTO db_cp.transactions (is_credit_card)
+SELECT random()::int::bool as is_credit_card
+FROM generate_series(1, 1000);
+
+--МОЁ
+INSERT INTO dp_cp.transactions (is_credit_card)
 SELECT random()::int::bool as is_credit_card
 FROM generate_series(1, 1000);
 
@@ -1196,6 +1212,12 @@ INSERT INTO db_cp.managers (name, salary, birth_date, email)
 SELECT random_string(8)                                                     as name,
        random_number(30000, 320000)::int                                    as salary,
        (NOW() - (interval '18 years')) - (random() * (interval '50 years')) as birth_date,
+       'manager' || random_number(1, 312)::int || '@bmstu-market.ru'        as email
+FROM generate_series(1, 312);
+
+-- populate table managers МОЁ
+INSERT INTO dp_cp.managers (name, email)
+SELECT random_string(8)                                                     as name,
        'manager' || random_number(1, 312)::int || '@bmstu-market.ru'        as email
 FROM generate_series(1, 312);
 
@@ -1230,3 +1252,14 @@ SELECT random_number(1, 500)::int                                    as user_id,
        ceil(random() * 1000)                                         as amount,
        '2021-01-01'::date + interval '1 days' * ceil(random() * 365) as date
 FROM generate_series(1, 1000);
+
+-- populate table membership_data - МОЁ
+INSERT INTO dp_cp.membership_data (organisation_id, rights_id, region_id, intermediary_id, transaction_id, manager_id, date)
+SELECT random_number(9, 57)::int                                    as organisation_id,
+       random_number(1, 49)::int                                    as rights_id,
+       random_number(1, 49)::int                                     as region_id,
+       random_number(1, 200)::int                                    as intermediary_id,
+       random_number(1, 1000)::int                                   as transaction_id,
+       random_number(1, 312)::int                                    as manager_id,
+       '2022-01-01'::date + interval '1 days' * ceil(random() * 365) as date
+FROM generate_series(1, 49);
