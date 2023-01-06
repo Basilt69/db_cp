@@ -1013,6 +1013,60 @@ VALUES ('Cadman Page', random_number(1, 120)::int,
        ('Jesse Hebert', random_number(1, 120)::int,
         to_char(round(random_number(1111111111, 9999999999)), '+7999-999-9999'));
 
+
+-- МОИ правки--
+INSERT INTO dp_cp.organisations (
+name, tin, phone) VALUES (
+'DA ltd', round(random_number(1,120000),0), '+7495-456-123'),
+('DFH gmbh', round(random_number(1,120000),0), '+7495-456-123'),
+('DFH ltd', round(random_number(1,120000),0), '+7495-456-123'),
+('AFH gmbh', round(random_number(1,120000),0), '+7495-456-123'),
+('DFH LLC', round(random_number(1,120000),0), '+7495-456-123'),
+('DFK ltd', round(random_number(1,120000),0), '+7495-456-123'),
+('AFW gmbh', round(random_number(1,120000),0), '+7495-456-123'),
+('Marl ltd', round(random_number(1,120000),0), '+7495-456-123'),
+('Diff gmbh', round(random_number(1,120000),0), '+7495-456-123'),
+('House ltd', round(random_number(1,120000),0), '+7495-456-123'),
+('Home gmbh', round(random_number(1,120000),0), '+7495-456-123'),
+('Down LLC', round(random_number(1,120000),0), '+7495-456-123'),
+('High ltd', round(random_number(1,120000),0), '+7495-456-123'),
+('Aqua gmbh', round(random_number(1,120000),0), '+7495-456-123'),
+('FFH gmbh', round(random_number(1,120000),0), '+7495-456-123'),
+('FFH ltd', round(random_number(1,120000),0), '+7495-456-123'),
+('LFH gmbh', round(random_number(1,120000),0), '+7495-456-123'),
+('KLFH LLC', round(random_number(1,120000),0), '+7495-456-123'),
+('KPMG ltd', round(random_number(1,120000),0), '+7495-456-123'),
+('CISCO gmbh', round(random_number(1,120000),0), '+7495-456-123'),
+('Marl LLC', round(random_number(1,120000),0), '+7495-456-123'),
+('Deloite ltd', round(random_number(1,120000),0), '+7495-456-123'),
+('HouseMR ltd', round(random_number(1,120000),0), '+7495-456-123'),
+('Home_2 gmbh', round(random_number(1,120000),0), '+7495-456-123'),
+('DownSide LLC', round(random_number(1,120000),0), '+7495-456-123'),
+('HighSCHOOL ltd', round(random_number(1,120000),0), '+7495-456-123'),
+('Aquame gmbh', round(random_number(1,120000),0), '+7495-456-123')
+('DKP ltd', round(random_number(1,120000),0), '+7495-456-123'),
+('AFeW gmbh', round(random_number(1,120000),0), '+7495-456-123'),
+('MarlW ltd', round(random_number(1,120000),0), '+7495-456-123'),
+('Differ gmbh', round(random_number(1,120000),0), '+7495-456-123'),
+('Houseman ltd', round(random_number(1,120000),0), '+7495-456-123'),
+('Homemade gmbh', round(random_number(1,120000),0), '+7495-456-123'),
+('Downbridge LLC', round(random_number(1,120000),0), '+7495-456-123'),
+('Highback ltd', round(random_number(1,120000),0), '+7495-456-123'),
+('Aquashow gmbh', round(random_number(1,120000),0), '+7495-456-123'),
+('FFHAl gmbh', round(random_number(1,120000),0), '+7495-456-123'),
+('FFHigh ltd', round(random_number(1,120000),0), '+7495-456-123'),
+('LeFtH gmbh', round(random_number(1,120000),0), '+7495-456-123'),
+('KLFM LLC', round(random_number(1,120000),0), '+7495-456-123'),
+('KPMG_Q ltd', round(random_number(1,120000),0), '+7495-456-123'),
+('CISCO Rus gmbh', round(random_number(1,120000),0), '+7495-456-123'),
+('Marler LLC', round(random_number(1,120000),0), '+7495-456-123'),
+('DeloiteT ltd', round(random_number(1,120000),0), '+7495-456-123'),
+('HouseMR2 ltd', round(random_number(1,120000),0), '+7495-456-123'),
+('Home_21 gmbh', round(random_number(1,120000),0), '+7495-456-123'),
+('DownSided LLC', round(random_number(1,120000),0), '+7495-456-123'),
+('HighSCH ltd', round(random_number(1,120000),0), '+7495-456-123'),
+('Aquawoeld gmbh', round(random_number(1,120000),0), '+7495-456-123');
+
 -- create table regions
 CREATE TABLE IF NOT EXISTS db_cp.regions
 (
