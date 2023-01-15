@@ -49,70 +49,53 @@ def main():
 
     if select == 0:
         query = get_sql_query("organisations_rights.sql")
-        users_purchases = pd.read_sql(query, conn)
-        st.write(users_purchases)
+        organisations_rights = pd.read_sql(query, conn)
+        st.write(organisations_rights)
 
     elif select == 1:
         query = get_sql_query("weekday_org.sql")
-        customers_sums = pd.read_sql(query, conn)
-        st.write(customers_sums)
+        weekday_org = pd.read_sql(query, conn)
+        st.write(weekday_org)
 
     elif select == 2:
         month = int(st.slider("Выберите месяц:", min_value=1, max_value=12, value=1, step=1))
         query = get_sql_query("count_by_month.sql").format(month=month)
-        sum_by_month = pd.read_sql(query, conn)
-        st.write(sum_by_month)
+        count_by_month = pd.read_sql(query, conn)
+        st.write(count_by_month)
 
     elif select == 3:
         query = get_sql_query("joins_by_months.sql")
-        sums_by_months = pd.read_sql(query, conn)
-        st.write(sums_by_months)
+        joins_by_months = pd.read_sql(query, conn)
+        st.write(joins_by_months)
 
     elif select == 4:
         query = get_sql_query("top_intermediaries.sql")
-        cum_sum = pd.read_sql(query, conn)
-        st.write(cum_sum)
+        top_intermediaries = pd.read_sql(query, conn)
+        st.write(top_intermediaries)
 
     elif select == 5:
         query = get_sql_query("top_regional_joins.sql")
-        top_regional_sales = pd.read_sql(query, conn)
-        st.write(top_regional_sales)
+        top_regional_joins = pd.read_sql(query, conn)
+        st.write(top_regional_joins)
+
+
+    elif select == 6:
+        query = get_sql_query("find_organisation.sql")
+        organisation = pd.read_sql(query, conn)
+        st.write(organisation)
 
 
     elif select == 7:
-        c1, c2 = st.columns(2)
-        name = st.text_input("Введите имя или часть имени:", value="james", max_chars=100)
-        age_from = c1.number_input("Введите возраст (от):", min_value=1, max_value=120, value=18, step=1)
-        age_to = c2.number_input("Введите возраст (до):", min_value=1, max_value=120, value=60, step=1)
-        query = get_sql_query("find_organisation.sql").format(name=name, age_from=age_from, age_to=age_to)
-        customer = pd.read_sql(query, conn)
-        st.write(customer)
+        query = get_sql_query("rights_count_filter.sql")
+        rights_count_filter = pd.read_sql(query, conn)
+        st.write(rights_count_filter)
 
     elif select == 8:
-        query = get_sql_query("avg_salary.sql")
-        avg_salary = pd.read_sql(query, conn)
-        st.write(avg_salary)
+        query = get_sql_query("joins_by_months.sql")
+        joins_by_month = pd.read_sql(query, conn)
+        st.write(joins_by_month)
 
     elif select == 9:
-        salary = st.number_input("Введите нижнюю границу ЗП: value=240000, step=1000")
-        query = get_sql_query("avg_salary_filter.sql").format(salary=salary)
-        avg_salary_filter = pd.read_sql(query, conn)
-        st.write(avg_salary_filter)
-
-    elif select == 10:
-        query = get_sql_query("age_count.sql")
-        age_count = pd.read_sql(query, conn)
-        st.write(age_count)
-
-    elif select == 11:
-        c1, c2 = st.columns(2)
-        age_from = c1.number_input("Введите возраст (от):", min_value=1, max_value=120, value=1, step=1)
-        age_to = c2.number_input("Введите возраст (до):", min_value=1, max_value=120, value=5, step=1)
-        query = get_sql_query("age_count_filter.sql").format(age_from=age_from, age_to=age_to)
-        age_count_filter = pd.read_sql(query, conn)
-        st.write(age_count_filter)
-
-    elif select == 12:
         query = st.text_area("Введите произвольный запрос:", value="SELECT version();")
         avg_salary_filter = pd.read_sql(query, conn)
         st.write(avg_salary_filter)
