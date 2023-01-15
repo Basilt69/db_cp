@@ -59,7 +59,7 @@ def main():
 
     elif select == 2:
         month = int(st.slider("Выберите месяц:", min_value=1, max_value=12, value=1, step=1))
-        query = get_sql_query("sum_by_month.sql").format(month=month)
+        query = get_sql_query("count_by_month.sql").format(month=month)
         sum_by_month = pd.read_sql(query, conn)
         st.write(sum_by_month)
 
@@ -78,17 +78,13 @@ def main():
         top_regional_sales = pd.read_sql(query, conn)
         st.write(top_regional_sales)
 
-    elif select == 6:
-        query = get_sql_query("pop_day.sql")
-        pop_day = pd.read_sql(query, conn)
-        st.write(pop_day)
 
     elif select == 7:
         c1, c2 = st.columns(2)
         name = st.text_input("Введите имя или часть имени:", value="james", max_chars=100)
         age_from = c1.number_input("Введите возраст (от):", min_value=1, max_value=120, value=18, step=1)
         age_to = c2.number_input("Введите возраст (до):", min_value=1, max_value=120, value=60, step=1)
-        query = get_sql_query("find_customer.sql").format(name=name, age_from=age_from, age_to=age_to)
+        query = get_sql_query("find_organisation.sql").format(name=name, age_from=age_from, age_to=age_to)
         customer = pd.read_sql(query, conn)
         st.write(customer)
 
