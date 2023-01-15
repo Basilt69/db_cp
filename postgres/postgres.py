@@ -74,7 +74,7 @@ def main():
         st.write(cum_sum)
 
     elif select == 5:
-        query = get_sql_query("top_regional_sales.sql")
+        query = get_sql_query("top_regional_joins.sql")
         top_regional_sales = pd.read_sql(query, conn)
         st.write(top_regional_sales)
 
