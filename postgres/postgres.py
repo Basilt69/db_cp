@@ -69,7 +69,7 @@ def main():
         st.write(sums_by_months)
 
     elif select == 4:
-        query = get_sql_query("cum_sum.sql")
+        query = get_sql_query("top_intermediaries.sql")
         cum_sum = pd.read_sql(query, conn)
         st.write(cum_sum)
 
