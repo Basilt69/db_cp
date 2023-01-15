@@ -53,7 +53,7 @@ def main():
         st.write(users_purchases)
 
     elif select == 1:
-        query = get_sql_query("customers_sums.sql")
+        query = get_sql_query("weekday_org.sql")
         customers_sums = pd.read_sql(query, conn)
         st.write(customers_sums)
 
