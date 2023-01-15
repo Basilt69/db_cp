@@ -29,7 +29,7 @@ def main():
     conn = init_connection()
 
     display = (
-        "Покупатели и их покупки",
+        "Организации и их права",
         "Суммы покупок покупателей",
         "Сумма всех покупок за выбранный месяц",
         "Суммы покупок по месяцам",
@@ -48,7 +48,7 @@ def main():
     query = None
 
     if select == 0:
-        query = get_sql_query("customers_purchases.sql")
+        query = get_sql_query("organisations_rights.sql")
         users_purchases = pd.read_sql(query, conn)
         st.write(users_purchases)
 
