@@ -64,7 +64,7 @@ def main():
         st.write(sum_by_month)
 
     elif select == 3:
-        query = get_sql_query("sums_by_months.sql")
+        query = get_sql_query("joins_by_months.sql")
         sums_by_months = pd.read_sql(query, conn)
         st.write(sums_by_months)
 
